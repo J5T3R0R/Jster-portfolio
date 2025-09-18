@@ -358,35 +358,51 @@ class PortfolioManager {
         const contactForm = document.querySelector('#contact-form');
         if (contactForm) {
             contactForm.addEventListener('submit', function (e) {
-                // Show loading state
-                const submitBtn = document.getElementById('submit-btn');
-                const btnText = submitBtn.querySelector('.btn-text');
-                const btnLoading = submitBtn.querySelector('.btn-loading');
+                        // Rate limiting check
+                        const lastSubmission = localStorage.getItem('lastContactSubmission');
+                        const now = Date.now();
+                        const cooldownTime = 5 * 60 * 1000; // 5 minutes in milliseconds
 
-                btnText.classList.add('hidden');
-                btnLoading.classList.remove('hidden');
-                submitBtn.disabled = true;
+                        if (lastSubmission && (now - parseInt(lastSubmission) < cooldownTime)) {
+                            e.preventDefault();
+                            const remainingTime = Math.ceil((cooldownTime - (now - parseInt(lastSubmission))) / 60000);
+                            alert(`Please wait ${remainingTime} minute(s) before sending another message.`);
+                            return;
+                        }
 
-                // Hide previous messages
-                document.getElementById('form-messages').classList.add('hidden');
-                document.getElementById('success-message').classList.add('hidden');
-                document.getElementById('error-message').classList.add('hidden');
+                        // Store submission time
+                        localStorage.setItem('lastContactSubmission', now.toString());
 
-                // the form submit naturally to Formspree
-                // The page will redirect or show a success message
 
-                // Reset button after a delay (in case of errors)
-                setTimeout(() => {
-                    btnText.classList.remove('hidden');
-                    btnLoading.classList.add('hidden');
-                    submitBtn.disabled = false;
-                }, 5000);
-            });
-        }
-    }
+                        // Show loading state
+                        const submitBtn = document.getElementById('submit-btn');
+                        const btnText = submitBtn.querySelector('.btn-text');
+                        const btnLoading = submitBtn.querySelector('.btn-loading');
+
+                        btnText.classList.add('hidden');
+                        btnLoading.classList.remove('hidden');
+                        submitBtn.disabled = true;
+
+                        // Hide previous messages
+                        document.getElementById('form-messages').classList.add('hidden');
+                        document.getElementById('success-message').classList.add('hidden');
+                        document.getElementById('error-message').classList.add('hidden');
+
+                        // the form submit naturally to Formspree
+                        // The page will redirect or show a success message
+
+                        // Reset button after a delay (in case of errors)
+                        setTimeout(() => {
+                            btnText.classList.remove('hidden');
+                            btnLoading.classList.add('hidden');
+                            submitBtn.disabled = false;
+                        }, 5000);
+                    });
+                }
+            }
 }
 
-// Initialize the portfolio when the page loads
-document.addEventListener('DOMContentLoaded', () => {
-    new PortfolioManager();
-});
+        // Initialize the portfolio when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new PortfolioManager();
+        });
