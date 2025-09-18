@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jst3r - Portfolio</title>
+    <title>0mvr - Portfolio</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body class="bg-black">
     <nav class="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-sm border-b border-[#0a9b29]/20">
         <div class="flex flex-row align-center content-center justify-between p-[2rem] text-2xl text-[#0a9b29]">
-            <a href="#" class="text-shadow-white hover:text-[#0b6810] transition-colors">~Jst3r</a>
+            <a href="#" class="text-shadow-white hover:text-[#0b6810] transition-colors">~</a>
             <ul class="flex flex-row justify-around align-center gap-x-4">
                 <li><a href="#home" class="nav-link hover:text-[#0b6810] transition-colors">Home</a></li>
                 <li><a href="#projects" class="nav-link hover:text-[#0b6810] transition-colors">Projects</a></li>
@@ -27,8 +30,11 @@
                 <div class="typing-container">
                     <h1 class="text-6xl font-bold text-[#0a9b29] mb-4">Lachguer Omar</h1>
                 </div>
-                <h2 class="text-2xl lg:text-4xl text-[#0b6810] font-bold">Front-End Developer • Cybersecurity Enthusiast • Exploring Low-level and Linux</h2>
-                <p class="text-lg lg:text-xl text-[#bacaa7]">I'm Omar, I break things to see how they work. From low-level systems and Linux to cybersecurity and front-end interfaces, I dive in, debug, and build.</p>
+                <h2 class="text-2xl lg:text-4xl text-[#0b6810] font-bold">Front-End Developer • Cybersecurity Enthusiast
+                    • Exploring Low-level and Linux</h2>
+                <p class="text-lg lg:text-xl text-[#bacaa7]">I'm Omar, I break things to see how they work. From
+                    low-level systems and Linux to penetration testing and front-end interfaces, I dive in, debug, and
+                    build.</p>
                 <div class="flex gap-4 mt-4">
                     <a href="#projects" class="btn-primary">View Projects</a>
                     <a href="#contact" class="btn-secondary">Get In Touch</a>
@@ -48,24 +54,53 @@
 
         <!-- About Section -->
         <section id="about" class="px-[2rem] lg:px-[10rem] py-[6rem]">
-            <div class="max-w-4xl mx-auto text-white">
+            <div class="max-w-6xl mx-auto text-white">
                 <h2 class="text-4xl font-bold text-[#0a9b29] mb-8 text-center">About Me</h2>
-                <div class="grid md:grid-cols-2 gap-8">
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
                     <div>
                         <h3 class="text-2xl font-bold text-[#0b6810] mb-4">Background</h3>
                         <p class="text-[#bacaa7] mb-4">
-                            I'm a passionate developer with a deep interest in cybersecurity and low-level programming. 
-                            My journey spans from front-end development to system-level security research.
+                            I'm a passionate developer with a deep interest in low-level programming and security
+                            research.
+                            My journey spans from system programming to penetration testing and CTF competitions.
                         </p>
                         <p class="text-[#bacaa7]">
-                            I enjoy reverse engineering, participating in CTF competitions, and exploring the depths 
+                            I enjoy reverse engineering, binary exploitation, and exploring the depths
                             of Linux systems.
                         </p>
                     </div>
                     <div>
-                        <h3 class="text-2xl font-bold text-[#0b6810] mb-4">Skills</h3>
+                        <h3 class="text-2xl font-bold text-[#0b6810] mb-4">Technical Skills</h3>
                         <div id="skills-container" class="space-y-3">
                             <!-- Skills will be loaded dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skills Categories -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="skill-category">
+                        <h4 class="text-lg font-bold text-[#0a9b29] mb-3">Low-level</h4>
+                        <div id="programming-skills" class="space-y-2">
+                            <!-- Programming skills will be loaded here -->
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4 class="text-lg font-bold text-[#0a9b29] mb-3">Systems</h4>
+                        <div id="systems-skills" class="space-y-2">
+                            <!-- Systems skills will be loaded here -->
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4 class="text-lg font-bold text-[#0a9b29] mb-3">Security</h4>
+                        <div id="security-skills" class="space-y-2">
+                            <!-- Security skills will be loaded here -->
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4 class="text-lg font-bold text-[#0a9b29] mb-3">Tools & Web</h4>
+                        <div id="tools-skills" class="space-y-2">
+                            <!-- Tools skills will be loaded here -->
                         </div>
                     </div>
                 </div>
@@ -80,32 +115,63 @@
                     <div>
                         <h3 class="text-2xl font-bold text-[#0b6810] mb-4">Let's Connect</h3>
                         <p class="text-[#bacaa7] mb-6">
-                            Interested in collaborating on cybersecurity projects, discussing low-level programming, 
+                            Interested in collaborating on security research, discussing low-level programming,
                             or just want to chat about tech? Feel free to reach out!
                         </p>
-                        <div class="space-y-4">
-                            <a href="https://github.com/J5T3R0R" target="_blank" class="flex items-center gap-3 text-[#bacaa7] hover:text-[#0a9b29] transition-colors">
-                                <span class="w-6 h-6">📧</span>
-                                GitHub Profile
-                            </a>
-                            <a href="mailto:1chgr077@gmail.com" class="flex items-center gap-3 text-[#bacaa7] hover:text-[#0a9b29] transition-colors">
-                                <span class="w-6 h-6">💌</span>
-                                Email Me
-                            </a>
+                        <div id="contact-links" class="space-y-4">
+                            <!-- Contact links will be loaded dynamically -->
                         </div>
                     </div>
                     <div>
-                        <form class="space-y-4">
+                        <!-- Success/Error Messages -->
+                        <div id="form-messages" class="mb-4 hidden">
+                            <div id="success-message"
+                                class="bg-green-900/50 border border-green-500 text-green-300 px-4 py-3 rounded-lg hidden">
+                                <i class="fas fa-check-circle mr-2"></i>
+                                Thank you for your message! I'll get back to you soon.
+                            </div>
+                            <div id="error-message"
+                                class="bg-red-900/50 border border-red-500 text-red-300 px-4 py-3 rounded-lg hidden">
+                                <i class="fas fa-exclamation-circle mr-2"></i>
+                                Sorry, there was an error sending your message. Please try again.
+                            </div>
+                        </div>
+
+                        <!-- Contact Form -->
+                        <form action="https://formspree.io/f/mdklrqla" method="POST" class="space-y-4"
+                            id="contact-form">
                             <div>
-                                <input type="text" placeholder="Your Name" class="w-full p-3 bg-black/60 border border-[#0a9b29]/30 rounded-lg text-white focus:border-[#0a9b29] outline-none">
+                                <input type="text" name="name" placeholder="Your Name"
+                                    class="w-full p-3 bg-black/60 border border-[#0a9b29]/30 rounded-lg text-white focus:border-[#0a9b29] outline-none transition-all"
+                                    required>
                             </div>
                             <div>
-                                <input type="email" placeholder="Your Email" class="w-full p-3 bg-black/60 border border-[#0a9b29]/30 rounded-lg text-white focus:border-[#0a9b29] outline-none">
+                                <input type="email" name="email" placeholder="Your Email"
+                                    class="w-full p-3 bg-black/60 border border-[#0a9b29]/30 rounded-lg text-white focus:border-[#0a9b29] outline-none transition-all"
+                                    required>
                             </div>
                             <div>
-                                <textarea placeholder="Your Message" rows="4" class="w-full p-3 bg-black/60 border border-[#0a9b29]/30 rounded-lg text-white focus:border-[#0a9b29] outline-none resize-none"></textarea>
+                                <input type="text" name="subject" placeholder="Subject"
+                                    class="w-full p-3 bg-black/60 border border-[#0a9b29]/30 rounded-lg text-white focus:border-[#0a9b29] outline-none transition-all">
                             </div>
-                            <button type="submit" class="btn-primary w-full">Send Message</button>
+                            <div>
+                                <textarea name="message" placeholder="Your Message" rows="4"
+                                    class="w-full p-3 bg-black/60 border border-[#0a9b29]/30 rounded-lg text-white focus:border-[#0a9b29] outline-none resize-none transition-all"
+                                    required></textarea>
+                            </div>
+
+                            <!-- Hidden fields for Formspree -->
+                            <input type="hidden" name="_subject" value="New Contact from J5T3R0R Portfolio">
+                            <input type="hidden" name="_replyto" value="">
+                            <input type="hidden" name="_next" value="https://j5t3r0r.github.io/J5T3R0R/#contact">
+
+                            <button type="submit" class="btn-primary w-full" id="submit-btn">
+                                <span class="btn-text">Send Message</span>
+                                <span class="btn-loading hidden">
+                                    <i class="fas fa-spinner fa-spin mr-2"></i>
+                                    Sending...
+                                </span>
+                            </button>
                         </form>
                     </div>
                 </div>
@@ -114,9 +180,10 @@
     </main>
 
     <footer class="py-8 text-center text-[#bacaa7] border-t border-[#0a9b29]/20">
-        <p>&copy; 2025 Lachguer Omar. All rights reserved.</p>
+        <p>&copy; 2024 Lachguer Omar. All rights reserved.</p>
     </footer>
 
     <script src="app.js"></script>
 </body>
+
 </html>

@@ -417,3 +417,60 @@ textarea:focus {
         break-inside: avoid;
     }
 }
+
+/* Skill categories styling */
+.skill-category {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(10, 155, 41, 0.2);
+    border-radius: 8px;
+    padding: 1rem;
+    transition: all 0.3s ease;
+}
+
+.skill-category:hover {
+    border-color: rgba(10, 155, 41, 0.4);
+    transform: translateY(-2px);
+}
+
+.skill-category h4 {
+    border-bottom: 2px solid #0a9b29;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Font Awesome icons styling */
+.fab, .fas {
+    color: #0a9b29;
+}
+
+/* Contact links hover effect */
+#contact-links a:hover i {
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
+}
+
+/* TryHackMe specific styling */
+.fa-skull-crossbones {
+    color: #c41e3a !important;
+}
+
+#contact-links a:hover .fa-skull-crossbones {
+    color: #ff1744 !important;
+}
+
+/* Responsive improvements for skill categories */
+@media (max-width: 768px) {
+    .skill-category {
+        margin-bottom: 1rem;
+    }
+    
+    .grid.lg\\:grid-cols-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .grid.lg\\:grid-cols-4 {
+        grid-template-columns: 1fr;
+    }
+}

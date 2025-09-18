@@ -1,34 +1,69 @@
 {
     "skills": [
         {
-            "name": "C/C++",
-            "level": 77,
+            "name": "C Programming",
+            "level": 70,
             "category": "programming"
         },
         {
-            "name": "Cybersecurity",
-            "level": 20,
-            "category": "security"
+            "name": "C++",
+            "level": 50,
+            "category": "programming"
         },
         {
-            "name": "Linux Systems",
-            "level": 69,
+            "name": "Shell Scripting",
+            "level": 63,
             "category": "systems"
         },
         {
-            "name": "Front-End Development",
-            "level": 75,
-            "category": "web"
+            "name": "Linux Administration",
+            "level": 77,
+            "category": "systems"
         },
         {
-            "name": "Networking",
-            "level": 44,
-            "category": "systems"
+            "name": "Git/Version Control",
+            "level": 80,
+            "category": "tools"
         },
         {
             "name": "Reverse Engineering",
             "level": 10,
             "category": "security"
+        },
+        {
+            "name": "Binary Exploitation",
+            "level": 20,
+            "category": "security"
+        },
+        {
+            "name": "Web Exploitation",
+            "level": 30,
+            "category": "security"
+        },
+        {
+            "name": "Cryptography",
+            "level": 10,
+            "category": "security"
+        },
+        {
+            "name": "HTML/CSS",
+            "level": 90,
+            "category": "web"
+        },
+        {
+            "name": "JavaScript",
+            "level": 75,
+            "category": "web"
+        },
+        {
+            "name": "React",
+            "level": 70,
+            "category": "web"
+        },
+        {
+            "name": "Tailwind css",
+            "level": 80,
+            "category": "web"
         }
     ]
 }

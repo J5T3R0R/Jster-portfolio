@@ -3,6 +3,7 @@ class PortfolioManager {
     constructor() {
         this.projects = [];
         this.skills = [];
+        this.contact = {};
         this.init();
     }
 
@@ -10,6 +11,7 @@ class PortfolioManager {
         await this.loadData();
         this.renderProjects();
         this.renderSkills();
+        this.renderContact();
         this.initializeAnimations();
     }
 
@@ -24,11 +26,29 @@ class PortfolioManager {
             const skillsResponse = await fetch('./data/skills.json');
             const skillsData = await skillsResponse.json();
             this.skills = skillsData.skills;
+
+            // Load contact data
+            try {
+                const contactResponse = await fetch('./data/contact.json');
+                const contactData = await contactResponse.json();
+                this.contact = contactData.contact;
+            } catch (error) {
+                console.log('Contact data not found, using defaults');
+                this.contact = this.getDefaultContact();
+            }
         } catch (error) {
             console.error('Error loading data:', error);
-            // Fallback data in case JSON files are not available
             this.loadFallbackData();
         }
+    }
+
+    getDefaultContact() {
+        return {
+            email: "your.email@example.com",
+            github: "https://github.com/J5T3R0R",
+            tryhackme: "https://tryhackme.com/p/yourusername",
+            linkedin: "https://linkedin.com/in/yourusername"
+        };
     }
 
     loadFallbackData() {
@@ -60,11 +80,13 @@ class PortfolioManager {
         ];
 
         this.skills = [
-            { name: "C/C++", level: 90, category: "programming" },
-            { name: "Cybersecurity", level: 85, category: "security" },
-            { name: "Linux Systems", level: 88, category: "systems" },
-            { name: "Front-End Development", level: 80, category: "web" }
+            { name: "C Programming", level: 92, category: "programming" },
+            { name: "C++", level: 88, category: "programming" },
+            { name: "Linux Administration", level: 87, category: "systems" },
+            { name: "Reverse Engineering", level: 75, category: "security" }
         ];
+
+        this.contact = this.getDefaultContact();
     }
 
     renderProjects() {
@@ -73,7 +95,6 @@ class PortfolioManager {
 
         container.innerHTML = '';
 
-        // Filter featured projects or show all if none are featured
         const featuredProjects = this.projects.filter(project => project.featured);
         const projectsToShow = featuredProjects.length > 0 ? featuredProjects : this.projects;
 
@@ -86,8 +107,8 @@ class PortfolioManager {
     createProjectCard(project) {
         const card = document.createElement('div');
         card.className = 'project-card bg-black/60 border border-[#0a9b29]/30 rounded-lg p-6 hover:border-[#0a9b29] transition-all';
-        
-        const techTags = project.technologies.map(tech => 
+
+        const techTags = project.technologies.map(tech =>
             `<span class="tech-tag">${tech}</span>`
         ).join('');
 
@@ -104,21 +125,56 @@ class PortfolioManager {
     }
 
     renderSkills() {
+        // Render main skills container (top skills)
         const container = document.getElementById('skills-container');
-        if (!container) return;
+        if (container) {
+            container.innerHTML = '';
 
-        container.innerHTML = '';
+            // Show top 6 skills
+            const topSkills = this.skills
+                .sort((a, b) => b.level - a.level)
+                .slice(0, 6);
 
-        this.skills.forEach(skill => {
-            const skillBar = this.createSkillBar(skill);
-            container.appendChild(skillBar);
+            topSkills.forEach(skill => {
+                const skillBar = this.createSkillBar(skill);
+                container.appendChild(skillBar);
+            });
+        }
+
+        // Render categorized skills
+        this.renderSkillsByCategory();
+    }
+
+    renderSkillsByCategory() {
+        const categories = ['programming', 'systems', 'security', 'tools', 'networking', 'web'];
+
+        categories.forEach(category => {
+            const container = document.getElementById(`${category}-skills`);
+            if (!container) return;
+
+            container.innerHTML = '';
+
+            const categorySkills = this.skills.filter(skill =>
+                skill.category === category ||
+                (category === 'tools' && (skill.category === 'tools' || skill.category === 'web'))
+            );
+
+            categorySkills.forEach(skill => {
+                const skillItem = document.createElement('div');
+                skillItem.className = 'flex justify-between items-center text-sm';
+                skillItem.innerHTML = `
+                    <span class="text-[#bacaa7]">${skill.name}</span>
+                    <span class="text-[#0a9b29] font-bold">${skill.level}%</span>
+                `;
+                container.appendChild(skillItem);
+            });
         });
     }
 
     createSkillBar(skill) {
         const skillDiv = document.createElement('div');
         skillDiv.className = 'skill-bar';
-        
+
         skillDiv.innerHTML = `
             <div class="flex justify-between mb-1">
                 <span class="text-[#bacaa7]">${skill.name}</span>
@@ -132,8 +188,61 @@ class PortfolioManager {
         return skillDiv;
     }
 
+    renderContact() {
+        const container = document.getElementById('contact-links');
+        if (!container) return;
+
+        container.innerHTML = '';
+
+        const contactLinks = [
+            {
+                icon: 'fab fa-github',
+                label: 'GitHub Profile',
+                url: this.contact.github
+            },
+            {
+                icon: 'fas fa-skull-crossbones',
+                label: 'TryHackMe Profile',
+                url: this.contact.tryhackme
+            },
+            {
+                icon: 'fas fa-envelope',
+                label: 'Email Me',
+                url: `mailto:${this.contact.email}`
+            }
+        ];
+
+        // Add optional social links if they exist
+        if (this.contact.linkedin) {
+            contactLinks.push({
+                icon: 'fab fa-linkedin',
+                label: 'LinkedIn',
+                url: this.contact.linkedin
+            });
+        }
+
+        if (this.contact.discord) {
+            contactLinks.push({
+                icon: 'fab fa-discord',
+                label: 'Discord',
+                url: `https://discord.com/users/${this.contact.discord.replace('#', '')}`
+            });
+        }
+
+        contactLinks.forEach(link => {
+            const linkElement = document.createElement('a');
+            linkElement.href = link.url;
+            linkElement.target = '_blank';
+            linkElement.className = 'flex items-center gap-3 text-[#bacaa7] hover:text-[#0a9b29] transition-colors';
+            linkElement.innerHTML = `
+                <i class="${link.icon} w-6 h-6 text-lg"></i>
+                ${link.label}
+            `;
+            container.appendChild(linkElement);
+        });
+    }
+
     initializeAnimations() {
-        // Initialize all animations after data is loaded
         this.setupNavigation();
         this.setupSkillAnimations();
         this.setupScrollAnimations();
@@ -142,15 +251,14 @@ class PortfolioManager {
     }
 
     setupNavigation() {
-        // Smooth scrolling for navigation
         const navLinks = document.querySelectorAll('.nav-link');
-        
+
         navLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
+            link.addEventListener('click', function (e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href').substring(1);
                 const targetSection = document.getElementById(targetId);
-                
+
                 if (targetSection) {
                     targetSection.scrollIntoView({
                         behavior: 'smooth',
@@ -160,15 +268,13 @@ class PortfolioManager {
             });
         });
 
-        // Active navigation highlighting
         const updateActiveNav = () => {
             const sections = document.querySelectorAll('section');
             const navLinks = document.querySelectorAll('.nav-link');
-            
+
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
                 if (scrollY >= (sectionTop - 200)) {
                     current = section.getAttribute('id');
                 }
@@ -187,12 +293,12 @@ class PortfolioManager {
 
     setupSkillAnimations() {
         const skillBars = document.querySelectorAll('.skill-progress');
-        
+
         const animateSkillBars = () => {
             skillBars.forEach(bar => {
                 const rect = bar.getBoundingClientRect();
                 const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-                
+
                 if (isVisible && !bar.classList.contains('animate')) {
                     const targetWidth = bar.getAttribute('data-width');
                     bar.style.setProperty('--target-width', targetWidth + '%');
@@ -230,7 +336,7 @@ class PortfolioManager {
             const text = heading.textContent;
             heading.textContent = '';
             heading.style.borderRight = '3px solid #0a9b29';
-            
+
             let i = 0;
             const typeWriter = () => {
                 if (i < text.length) {
@@ -243,27 +349,38 @@ class PortfolioManager {
                     }, 1000);
                 }
             };
-            
+
             setTimeout(typeWriter, 500);
         }
     }
 
     setupContactForm() {
-        const contactForm = document.querySelector('#contact form');
+        const contactForm = document.querySelector('#contact-form');
         if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const name = this.querySelector('input[type="text"]').value;
-                const email = this.querySelector('input[type="email"]').value;
-                const message = this.querySelector('textarea').value;
-                
-                if (name && email && message) {
-                    alert('Thank you for your message! I\'ll get back to you soon.');
-                    this.reset();
-                } else {
-                    alert('Please fill in all fields.');
-                }
+            contactForm.addEventListener('submit', function (e) {
+                // Show loading state
+                const submitBtn = document.getElementById('submit-btn');
+                const btnText = submitBtn.querySelector('.btn-text');
+                const btnLoading = submitBtn.querySelector('.btn-loading');
+
+                btnText.classList.add('hidden');
+                btnLoading.classList.remove('hidden');
+                submitBtn.disabled = true;
+
+                // Hide previous messages
+                document.getElementById('form-messages').classList.add('hidden');
+                document.getElementById('success-message').classList.add('hidden');
+                document.getElementById('error-message').classList.add('hidden');
+
+                // the form submit naturally to Formspree
+                // The page will redirect or show a success message
+
+                // Reset button after a delay (in case of errors)
+                setTimeout(() => {
+                    btnText.classList.remove('hidden');
+                    btnLoading.classList.add('hidden');
+                    submitBtn.disabled = false;
+                }, 5000);
             });
         }
     }
