@@ -1,0 +1,34 @@
+{
+    "skills": [
+        {
+            "name": "C/C++",
+            "level": 77,
+            "category": "programming"
+        },
+        {
+            "name": "Cybersecurity",
+            "level": 20,
+            "category": "security"
+        },
+        {
+            "name": "Linux Systems",
+            "level": 69,
+            "category": "systems"
+        },
+        {
+            "name": "Front-End Development",
+            "level": 75,
+            "category": "web"
+        },
+        {
+            "name": "Networking",
+            "level": 44,
+            "category": "systems"
+        },
+        {
+            "name": "Reverse Engineering",
+            "level": 10,
+            "category": "security"
+        }
+    ]
+}

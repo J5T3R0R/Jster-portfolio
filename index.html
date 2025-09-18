@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jst3r - Portfolio</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-black">
+    <nav class="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-sm border-b border-[#0a9b29]/20">
+        <div class="flex flex-row align-center content-center justify-between p-[2rem] text-2xl text-[#0a9b29]">
+            <a href="#" class="text-shadow-white hover:text-[#0b6810] transition-colors">~Jst3r</a>
+            <ul class="flex flex-row justify-around align-center gap-x-4">
+                <li><a href="#home" class="nav-link hover:text-[#0b6810] transition-colors">Home</a></li>
+                <li><a href="#projects" class="nav-link hover:text-[#0b6810] transition-colors">Projects</a></li>
+                <li><a href="#about" class="nav-link hover:text-[#0b6810] transition-colors">About</a></li>
+                <li><a href="#contact" class="nav-link hover:text-[#0b6810] transition-colors">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="pt-[8rem]">
+        <!-- Hero Section -->
+        <section id="home" class="px-[2rem] lg:px-[10rem] py-[6rem] min-h-screen flex items-center">
+            <div class="text-white flex flex-col justify-center gap-y-[2rem] max-w-[60rem]">
+                <div class="typing-container">
+                    <h1 class="text-6xl font-bold text-[#0a9b29] mb-4">Lachguer Omar</h1>
+                </div>
+                <h2 class="text-2xl lg:text-4xl text-[#0b6810] font-bold">Front-End Developer • Cybersecurity Enthusiast • Exploring Low-level and Linux</h2>
+                <p class="text-lg lg:text-xl text-[#bacaa7]">I'm Omar, I break things to see how they work. From low-level systems and Linux to cybersecurity and front-end interfaces, I dive in, debug, and build.</p>
+                <div class="flex gap-4 mt-4">
+                    <a href="#projects" class="btn-primary">View Projects</a>
+                    <a href="#contact" class="btn-secondary">Get In Touch</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="px-[2rem] lg:px-[10rem] py-[6rem] bg-gray-900/50">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-4xl font-bold text-[#0a9b29] mb-8 text-center">Featured Projects</h2>
+                <div id="projects-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Projects will be loaded dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="px-[2rem] lg:px-[10rem] py-[6rem]">
+            <div class="max-w-4xl mx-auto text-white">
+                <h2 class="text-4xl font-bold text-[#0a9b29] mb-8 text-center">About Me</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-2xl font-bold text-[#0b6810] mb-4">Background</h3>
+                        <p class="text-[#bacaa7] mb-4">
+                            I'm a passionate developer with a deep interest in cybersecurity and low-level programming. 
+                            My journey spans from front-end development to system-level security research.
+                        </p>
+                        <p class="text-[#bacaa7]">
+                            I enjoy reverse engineering, participating in CTF competitions, and exploring the depths 
+                            of Linux systems.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-[#0b6810] mb-4">Skills</h3>
+                        <div id="skills-container" class="space-y-3">
+                            <!-- Skills will be loaded dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="px-[2rem] lg:px-[10rem] py-[6rem] bg-gray-900/50">
+            <div class="max-w-4xl mx-auto text-white">
+                <h2 class="text-4xl font-bold text-[#0a9b29] mb-8 text-center">Get In Touch</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-2xl font-bold text-[#0b6810] mb-4">Let's Connect</h3>
+                        <p class="text-[#bacaa7] mb-6">
+                            Interested in collaborating on cybersecurity projects, discussing low-level programming, 
+                            or just want to chat about tech? Feel free to reach out!
+                        </p>
+                        <div class="space-y-4">
+                            <a href="https://github.com/J5T3R0R" target="_blank" class="flex items-center gap-3 text-[#bacaa7] hover:text-[#0a9b29] transition-colors">
+                                <span class="w-6 h-6">📧</span>
+                                GitHub Profile
+                            </a>
+                            <a href="mailto:1chgr077@gmail.com" class="flex items-center gap-3 text-[#bacaa7] hover:text-[#0a9b29] transition-colors">
+                                <span class="w-6 h-6">💌</span>
+                                Email Me
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <form class="space-y-4">
+                            <div>
+                                <input type="text" placeholder="Your Name" class="w-full p-3 bg-black/60 border border-[#0a9b29]/30 rounded-lg text-white focus:border-[#0a9b29] outline-none">
+                            </div>
+                            <div>
+                                <input type="email" placeholder="Your Email" class="w-full p-3 bg-black/60 border border-[#0a9b29]/30 rounded-lg text-white focus:border-[#0a9b29] outline-none">
+                            </div>
+                            <div>
+                                <textarea placeholder="Your Message" rows="4" class="w-full p-3 bg-black/60 border border-[#0a9b29]/30 rounded-lg text-white focus:border-[#0a9b29] outline-none resize-none"></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary w-full">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-8 text-center text-[#bacaa7] border-t border-[#0a9b29]/20">
+        <p>&copy; 2025 Lachguer Omar. All rights reserved.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

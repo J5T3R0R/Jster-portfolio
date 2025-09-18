@@ -1,0 +1,40 @@
+{
+    "projects": [
+        {
+            "id": "msh",
+            "title": "MSH - Shell Implementation",
+            "description": "Custom shell implementation in C, featuring command parsing, process management, and built-in commands. A deep dive into Unix system calls.",
+            "technologies": [
+                "C",
+                "Unix Systems",
+                "Process Management"
+            ],
+            "githubUrl": "https://github.com/J5T3R0R/msh",
+            "featured": true
+        },
+        {
+            "id": "philosophers",
+            "title": "Philosophers",
+            "description": "Solution to the classic dining philosophers problem using threads and mutexes. Explores concurrent programming and deadlock prevention.",
+            "technologies": [
+                "C",
+                "Threading",
+                "Concurrency"
+            ],
+            "githubUrl": "https://github.com/J5T3R0R/philosophers",
+            "featured": true
+        },
+        {
+            "id": "minisock",
+            "title": "MiniSock",
+            "description": "Lightweight socket programming implementation. Network communication library exploring TCP/UDP protocols and client-server architecture.",
+            "technologies": [
+                "C",
+                "Networking",
+                "Socket Programming"
+            ],
+            "githubUrl": "https://github.com/J5T3R0R/minisock",
+            "featured": true
+        }
+    ]
+}
